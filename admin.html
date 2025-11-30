@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Espace Admin - Maintenance IT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+    <!-- Admin Header -->
+    <header class="admin-header">
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i> Admin Maintenance IT
+            </div>
+            <div class="admin-actions">
+                <span id="admin-name"></span>
+                <button id="logout-btn" class="btn-outline">
+                    <i class="fas fa-sign-out-alt"></i> Déconnexion
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Admin Dashboard -->
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <h3>Conversations</h3>
+                <div class="sidebar-stats">
+                    <span id="online-count">0 en ligne</span>
+                </div>
+            </div>
+            
+            <div class="conversation-list" id="conversation-list">
+                <!-- Rempli dynamiquement -->
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <div class="chat-header">
+                <div id="current-client-info">
+                    <div class="client-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="client-info">
+                        <h4 id="client-name">Sélectionnez une conversation</h4>
+                        <span id="client-status">En ligne</span>
+                    </div>
+                </div>
+                <div class="chat-actions">
+                    <button id="assign-expert" class="btn-outline">Assigner un expert</button>
+                    <button id="close-chat" class="btn-danger">Clôturer</button>
+                </div>
+            </div>
+
+            <div id="admin-chat-messages" class="admin-chat-messages">
+                <div class="no-conversation">
+                    <i class="fas fa-comments"></i>
+                    <h3>Sélectionnez une conversation</h3>
+                    <p>Choisissez une conversation dans la liste pour commencer à dialoguer</p>
+                </div>
+            </div>
+
+            <div class="admin-input-area" id="admin-input-area" style="display: none;">
+                <div class="input-tools">
+                    <button class="tool-btn" title="Ajouter un fichier">
+                        <i class="fas fa-paperclip"></i>
+                    </button>
+                    <button class="tool-btn" title="Insérer un devis">
+                        <i class="fas fa-euro-sign"></i>
+                    </button>
+                </div>
+                <input type="text" id="admin-input" placeholder="Tapez votre message..." autocomplete="off">
+                <button id="admin-send" class="btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </main>
+
+        <!-- Expert Panel -->
+        <aside class="expert-panel">
+            <div class="panel-header">
+                <h3>Experts Disponibles</h3>
+            </div>
+            <div class="experts-list" id="experts-list">
+                <!-- Rempli dynamiquement -->
+            </div>
+            
+            <div class="price-calculator">
+                <h4>Calculateur de Devis</h4>
+                <div class="calculator-form">
+                    <select id="service-type">
+                        <option value="">Type de service</option>
+                    </select>
+                    <select id="complexity">
+                        <option value="">Niveau de complexité</option>
+                    </select>
+                    <input type="number" id="hours" placeholder="Heures estimées" min="1">
+                    <button id="calculate-price" class="btn">Calculer</button>
+                    <div id="price-result" class="price-result"></div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="assets/js/admin.js"></script>
+</body>
+</html>
