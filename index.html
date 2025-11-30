@@ -15,28 +15,232 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "name": "Maintenance IT Pro",
-        "description": "Service professionnel de maintenance informatique et support technique",
-        "areaServed": "France",
-        "serviceType": "IT Support",
-        "hoursAvailable": "24/7",
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+33-1-84-88-48-48",
-            "email": "support@maintenance-it.pro",
-            "contactType": "customer service"
+    <style>
+        /* ===== STYLES SPÉCIFIQUES INDEX ===== */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
         }
-    }
-    </script>
+
+        .mobile-menu-btn:hover {
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1rem 0;
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 0 2rem;
+        }
+
+        .mobile-nav a {
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            color: var(--secondary);
+            text-decoration: none;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .mobile-nav a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .mobile-nav .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .mobile-nav .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Hero amélioré */
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Section expertise */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .expertise-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid var(--glass-border);
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .expertise-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Chat amélioré */
+        .chat-header-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .expert-availability {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .availability-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--success);
+            animation: pulse 2s infinite;
+        }
+
+        .welcome-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .quick-action-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            color: var(--primary);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .quick-action-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .welcome-actions {
+                justify-content: center;
+            }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .stat-card {
+                padding: 1rem;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <!-- ===== HEADER ===== -->
+    <!-- ===== HEADER AVEC MENU BURGER ===== -->
     <header class="header" id="header">
         <div class="container header-content">
             <!-- Logo -->
@@ -45,7 +249,7 @@
                 <span>Maintenance IT Pro</span>
             </div>
 
-            <!-- Navigation Principale -->
+            <!-- Navigation Desktop -->
             <nav class="nav" aria-label="Navigation principale">
                 <a href="#services" class="nav-link">Services</a>
                 <a href="#pricing" class="nav-link">Tarifs</a>
@@ -53,14 +257,32 @@
                 <a href="login.html" class="btn-outline nav-cta">Espace Pro</a>
             </nav>
 
-            <!-- Menu Mobile -->
+            <!-- Menu Burger Mobile -->
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu mobile">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
+
+        <!-- Menu Mobile -->
+        <div class="mobile-menu" id="mobileMenu">
+            <nav class="mobile-nav" aria-label="Navigation mobile">
+                <a href="#services" onclick="closeMobileMenu()">
+                    <i class="fas fa-cogs"></i> Services
+                </a>
+                <a href="#pricing" onclick="closeMobileMenu()">
+                    <i class="fas fa-euro-sign"></i> Tarifs
+                </a>
+                <a href="#support" onclick="closeMobileMenu()">
+                    <i class="fas fa-headset"></i> Support
+                </a>
+                <a href="login.html" class="btn-outline" onclick="closeMobileMenu()">
+                    <i class="fas fa-lock"></i> Espace Pro
+                </a>
+            </nav>
+        </div>
     </header>
 
-    <!-- ===== HERO SECTION ===== -->
+    <!-- ===== HERO SECTION PROFESSIONNELLE ===== -->
     <section class="hero-section" id="hero">
         <div class="container hero-content">
             <!-- Titre Principal -->
@@ -71,34 +293,72 @@
             
             <!-- Sous-titre -->
             <p class="hero-subtitle">
-                Support technique 24/7 • Intervention rapide • Experts certifiés Microsoft & Cisco
+                Support technique 24/7 avec de vrais experts • Intervention rapide • Certifications Microsoft & Cisco
             </p>
 
             <!-- Call-to-Action -->
             <div class="hero-buttons">
                 <a href="#support" class="btn btn-primary">
                     <i class="fas fa-comments"></i>
-                    Obtenir un devis gratuit
+                    Support Immédiat
                 </a>
                 <a href="#services" class="btn btn-secondary">
                     <i class="fas fa-cogs"></i>
-                    Découvrir nos compétences
+                    Nos Expertises
                 </a>
             </div>
 
-            <!-- Indicateurs de confiance -->
-            <div class="trust-indicators">
-                <div class="trust-item">
-                    <i class="fas fa-clock"></i>
-                    <span>Réponse sous 15min</span>
+            <!-- Statistiques de confiance -->
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support continu</div>
                 </div>
-                <div class="trust-item">
-                    <i class="fas fa-shield-check"></i>
-                    <span>Experts certifiés</span>
+                <div class="stat-card">
+                    <div class="stat-number">15min</div>
+                    <div class="stat-label">Réponse moyenne</div>
                 </div>
-                <div class="trust-item">
-                    <i class="fas fa-star"></i>
-                    <span>4.9/5 satisfaction</span>
+                <div class="stat-card">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Satisfaction client</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION EXPERTISE ===== -->
+    <section class="section" style="background: #f8fafc;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Pourquoi Nous Choisir ?</h2>
+                <p class="section-subtitle">
+                    Une équipe d'experts certifiés à votre service
+                </p>
+            </div>
+
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Experts Certifiés</h3>
+                    <p>Nos techniciens possèdent les certifications Microsoft, Cisco, et CompTIA pour un support de qualité.</p>
+                </div>
+
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Disponible 24h/24</h3>
+                    <p>Support continu pour répondre à vos urgences, même en dehors des heures de bureau.</p>
+                </div>
+
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Intervention Rapide</h3>
+                    <p>Réponse garantie sous 15 minutes pour les urgences, intervention sur site si nécessaire.</p>
                 </div>
             </div>
         </div>
@@ -109,9 +369,9 @@
         <div class="container">
             <!-- En-tête Section -->
             <div class="section-header">
-                <h2 class="section-title">Nos Compétences Expertes</h2>
+                <h2 class="section-title">Nos Services Experts</h2>
                 <p class="section-subtitle">
-                    Une équipe d'experts certifiés pour tous vos besoins informatiques
+                    Des solutions complètes pour tous vos besoins informatiques
                 </p>
             </div>
 
@@ -149,24 +409,31 @@
         </div>
     </section>
 
-    <!-- ===== SUPPORT SECTION ===== -->
+    <!-- ===== SUPPORT SECTION RÉELLE ===== -->
     <section id="support" class="section support-section">
         <div class="container">
             <!-- En-tête Section -->
             <div class="section-header">
                 <h2 class="section-title">Support Immédiat</h2>
                 <p class="section-subtitle">
-                    Discutez avec nos experts et obtenez un devis personnalisé en temps réel
+                    <strong>Véritable équipe d'experts - Pas de simulation</strong><br>
+                    Discutez avec nos techniciens et obtenez une aide réelle
                 </p>
             </div>
 
-            <!-- Interface de Chat -->
+            <!-- Interface de Chat Réelle -->
             <div class="chat-wrapper">
                 <!-- En-tête du Chat -->
                 <div class="chat-header">
-                    <div class="chat-status-info">
-                        <div class="chat-status online" aria-label="En ligne"></div>
-                        <span class="chat-status-text">Support Technique - En ligne</span>
+                    <div class="chat-header-info">
+                        <div class="chat-status online"></div>
+                        <div>
+                            <span class="chat-status-text">Support Technique - En ligne</span>
+                            <div class="expert-availability">
+                                <div class="availability-dot"></div>
+                                <span>Équipe d'experts disponible</span>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="chat-actions">
@@ -179,15 +446,30 @@
                 
                 <!-- Zone des Messages -->
                 <div id="chat-messages" class="chat-messages" role="log" aria-live="polite">
-                    <!-- Message de bienvenue -->
+                    <!-- Message de bienvenue réel -->
                     <div class="welcome-message">
                         <div class="message agent" role="article">
                             <div class="message-content">
-                                <p>👋 <strong>Bonjour !</strong> Je suis votre assistant technique. Décrivez votre problème et je vous connecterai avec l'expert approprié.</p>
+                                <p>👋 <strong>Bonjour ! Bienvenue chez Maintenance IT Pro</strong></p>
+                                <p>Je suis l'interface de support de notre équipe d'experts. <strong>Ce n'est pas un chatbot simulé</strong>.</p>
+                                <p>Décrivez votre problème technique et notre équipe vous répondra rapidement.</p>
+                                
+                                <div class="welcome-actions">
+                                    <button class="quick-action-btn" onclick="setQuickMessage('Problème réseau / internet')">
+                                        🌐 Réseau
+                                    </button>
+                                    <button class="quick-action-btn" onclick="setQuickMessage('Ordinateur lent / plantage')">
+                                        💻 Lenteur
+                                    </button>
+                                    <button class="quick-action-btn" onclick="setQuickMessage('Virus / sécurité')">
+                                        🛡️ Sécurité
+                                    </button>
+                                    <button class="quick-action-btn" onclick="setQuickMessage('Sauvegarde / perte de données')">
+                                        💾 Sauvegarde
+                                    </button>
+                                </div>
                             </div>
-                            <div class="message-time" id="current-time" aria-label="Heure actuelle">
-                                <!-- Heure actuelle -->
-                            </div>
+                            <div class="message-time" id="current-time"></div>
                         </div>
                     </div>
                 </div>
@@ -198,23 +480,47 @@
                         type="text" 
                         id="chat-input" 
                         class="chat-input" 
-                        placeholder="Décrivez votre problème technique en détail..." 
+                        placeholder="Décrivez votre problème technique en détail pour nos experts..." 
                         autocomplete="off"
-                        aria-label="Votre message"
+                        aria-label="Votre message pour nos experts"
                         maxlength="500"
                     >
-                    <button id="send-btn" class="btn btn-primary" aria-label="Envoyer le message">
+                    <button id="send-btn" class="btn btn-primary" aria-label="Envoyer le message à notre équipe">
                         <i class="fas fa-paper-plane"></i>
                     </button>
                 </div>
 
-                <!-- Indicateur de saisie -->
-                <div class="typing-indicator" id="typing-indicator" aria-hidden="true">
-                    <span>Expert en train de répondre...</span>
+                <!-- Indicateur de statut réel -->
+                <div class="typing-indicator" id="typing-indicator" aria-hidden="true" style="display: none;">
+                    <span>Connexion à notre équipe d'experts...</span>
                     <div class="typing-dots">
                         <span></span>
                         <span></span>
                         <span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Informations de contact réelles -->
+            <div class="contact-alternatives">
+                <div class="contact-cards">
+                    <div class="contact-card">
+                        <i class="fas fa-phone"></i>
+                        <h4>Support Téléphonique</h4>
+                        <p>+33 1 84 88 48 48</p>
+                        <small>Disponible 24h/24</small>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Email</h4>
+                        <p>support@maintenance-it.pro</p>
+                        <small>Réponse sous 1 heure</small>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-video"></i>
+                        <h4>Support Visio</h4>
+                        <p>Sur rendez-vous</p>
+                        <small>Partage d'écran</small>
                     </div>
                 </div>
             </div>
@@ -241,9 +547,6 @@
                         </a>
                         <a href="#" aria-label="Twitter" class="social-link">
                             <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" aria-label="Facebook" class="social-link">
-                            <i class="fab fa-facebook"></i>
                         </a>
                     </div>
                 </div>
@@ -294,30 +597,116 @@
     </footer>
 
     <!-- ===== SCRIPTS ===== -->
-    <script src="assets/js/utils.js"></script>
     <script src="assets/js/data.js"></script>
     <script src="assets/js/chat.js"></script>
-    <script src="assets/js/main.js"></script>
-
-    <!-- Script d'initialisation -->
+    
+    <!-- Script d'initialisation spécifique -->
     <script>
-        // Initialisation au chargement de la page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialiser les composants
-            if (typeof initMain === 'function') {
-                initMain();
+        // Gestion du menu burger
+        function initMobileMenu() {
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('active');
+                    menuBtn.innerHTML = mobileMenu.classList.contains('active') 
+                        ? '<i class="fas fa-times"></i>' 
+                        : '<i class="fas fa-bars"></i>';
+                });
             }
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuBtn = document.getElementById('mobileMenuBtn');
             
-            // Mettre à jour l'heure actuelle
+            if (mobileMenu) mobileMenu.classList.remove('active');
+            if (menuBtn) menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+
+        // Messages rapides
+        function setQuickMessage(message) {
+            const chatInput = document.getElementById('chat-input');
+            if (chatInput) {
+                chatInput.value = message;
+                chatInput.focus();
+            }
+        }
+
+        // Initialisation des services et tarifs
+        function initDynamicContent() {
+            // Chargement des services
+            if (typeof dataManager !== 'undefined') {
+                const servicesGrid = document.getElementById('services-grid');
+                const pricingGrid = document.getElementById('pricing-grid');
+                
+                if (servicesGrid) {
+                    dataManager.services.forEach(service => {
+                        const serviceCard = createServiceCard(service);
+                        servicesGrid.appendChild(serviceCard);
+                    });
+                }
+                
+                if (pricingGrid) {
+                    dataManager.pricing.forEach(plan => {
+                        const pricingCard = createPricingCard(plan);
+                        pricingGrid.appendChild(pricingCard);
+                    });
+                }
+            }
+        }
+
+        function createServiceCard(service) {
+            const card = document.createElement('div');
+            card.className = 'service-card';
+            card.innerHTML = `
+                <div class="service-icon">
+                    <i class="${service.icon}"></i>
+                </div>
+                <h3>${service.title}</h3>
+                <p>${service.description}</p>
+                <div class="service-meta">
+                    <span class="response-time">
+                        <i class="fas fa-clock"></i>
+                        Réponse: ${service.responseTime}
+                    </span>
+                </div>
+                <div class="service-skills">
+                    ${service.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                </div>
+            `;
+            return card;
+        }
+
+        function createPricingCard(plan) {
+            const card = document.createElement('div');
+            card.className = `pricing-card ${plan.popular ? 'featured' : ''}`;
+            card.innerHTML = `
+                ${plan.popular ? '<div class="pricing-badge">Populaire</div>' : ''}
+                <h3>${plan.name}</h3>
+                <div class="price">${plan.price}€</div>
+                <div class="price-period">${plan.period}</div>
+                <ul class="pricing-features">
+                    ${plan.features.map(feature => `<li>${feature}</li>`).join('')}
+                </ul>
+                <button class="btn ${plan.popular ? 'btn-primary' : 'btn-outline'}">
+                    ${plan.cta}
+                </button>
+            `;
+            return card;
+        }
+
+        // Initialisation au chargement
+        document.addEventListener('DOMContentLoaded', function() {
+            initMobileMenu();
+            initDynamicContent();
             updateCurrentTime();
             
-            // Initialiser le chat
-            if (typeof initChat === 'function') {
-                initChat();
-            }
+            // Mettre à jour l'heure toutes les minutes
+            setInterval(updateCurrentTime, 60000);
         });
 
-        // Fonction utilitaire pour mettre à jour l'heure
         function updateCurrentTime() {
             const now = new Date();
             const timeString = now.getHours().toString().padStart(2, '0') + ':' + 
@@ -327,6 +716,16 @@
                 timeElement.textContent = timeString;
             }
         }
+
+        // Fermer le menu en cliquant à l'extérieur
+        document.addEventListener('click', (e) => {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            
+            if (mobileMenu && menuBtn && !mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                closeMobileMenu();
+            }
+        });
     </script>
 </body>
 </html>
