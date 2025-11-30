@@ -2,123 +2,331 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Support Client - Maintenance IT Professionnelle</title>
+    <title>Maintenance IT Pro - Support Informatique Expert 24/7</title>
+    <meta name="description" content="Service professionnel de maintenance informatique. Support technique 24h/24, experts certifiés, interventions rapides. Obtenez un devis gratuit.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="maintenance informatique, support technique, dépannage IT, experts certifiés, assistance 24/7">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    <link rel="preload" href="assets/css/style.css" as="style">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Maintenance IT Pro",
+        "description": "Service professionnel de maintenance informatique et support technique",
+        "areaServed": "France",
+        "serviceType": "IT Support",
+        "hoursAvailable": "24/7",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+33-1-84-88-48-48",
+            "email": "support@maintenance-it.pro",
+            "contactType": "customer service"
+        }
+    }
+    </script>
 </head>
+
 <body>
-    <!-- Header -->
-    <header class="header">
+    <!-- ===== HEADER ===== -->
+    <header class="header" id="header">
         <div class="container header-content">
+            <!-- Logo -->
             <div class="logo">
-                <i class="fas fa-tools"></i> Maintenance IT Pro
+                <i class="fas fa-shield-alt"></i>
+                <span>Maintenance IT Pro</span>
             </div>
-            <nav class="nav">
-                <a href="#services">Services</a>
-                <a href="#pricing">Tarifs</a>
-                <a href="#support">Support</a>
-                <a href="login.html" class="btn-outline">Espace Pro</a>
+
+            <!-- Navigation Principale -->
+            <nav class="nav" aria-label="Navigation principale">
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#pricing" class="nav-link">Tarifs</a>
+                <a href="#support" class="nav-link">Support</a>
+                <a href="login.html" class="btn-outline nav-cta">Espace Pro</a>
             </nav>
+
+            <!-- Menu Mobile -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu mobile">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero-section" id="hero">
         <div class="container hero-content">
-            <h1>Maintenance Informatique Expert</h1>
-            <p>Support technique 24/7 • Intervention rapide • Experts certifiés</p>
+            <!-- Titre Principal -->
+            <h1 class="hero-title">
+                Maintenance Informatique 
+                <span class="text-gradient">Expert</span>
+            </h1>
+            
+            <!-- Sous-titre -->
+            <p class="hero-subtitle">
+                Support technique 24/7 • Intervention rapide • Experts certifiés Microsoft & Cisco
+            </p>
+
+            <!-- Call-to-Action -->
             <div class="hero-buttons">
-                <a href="#support" class="btn">Obtenir un devis</a>
-                <a href="#services" class="btn btn-outline">Nos compétences</a>
+                <a href="#support" class="btn btn-primary">
+                    <i class="fas fa-comments"></i>
+                    Obtenir un devis gratuit
+                </a>
+                <a href="#services" class="btn btn-secondary">
+                    <i class="fas fa-cogs"></i>
+                    Découvrir nos compétences
+                </a>
+            </div>
+
+            <!-- Indicateurs de confiance -->
+            <div class="trust-indicators">
+                <div class="trust-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Réponse sous 15min</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-shield-check"></i>
+                    <span>Experts certifiés</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-star"></i>
+                    <span>4.9/5 satisfaction</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="section">
+    <!-- ===== SERVICES SECTION ===== -->
+    <section id="services" class="section services-section">
         <div class="container">
-            <div class="section-title">
-                <h2>Nos Compétences</h2>
-                <p>Des experts certifiés pour tous vos besoins IT</p>
+            <!-- En-tête Section -->
+            <div class="section-header">
+                <h2 class="section-title">Nos Compétences Expertes</h2>
+                <p class="section-subtitle">
+                    Une équipe d'experts certifiés pour tous vos besoins informatiques
+                </p>
             </div>
-            
+
+            <!-- Grille des Services -->
             <div class="services-grid" id="services-grid">
-                <!-- Rempli dynamiquement par JavaScript -->
+                <!-- Les services seront injectés dynamiquement -->
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="section" style="background: #f8fafc;">
+    <!-- ===== PRICING SECTION ===== -->
+    <section id="pricing" class="section pricing-section">
         <div class="container">
-            <div class="section-title">
-                <h2>Nos Tarifs</h2>
-                <p>Des solutions adaptées à chaque niveau de complexité</p>
+            <!-- En-tête Section -->
+            <div class="section-header">
+                <h2 class="section-title">Tarifs Transparents</h2>
+                <p class="section-subtitle">
+                    Des solutions adaptées à chaque niveau de complexité et budget
+                </p>
             </div>
-            
+
+            <!-- Grille des Tarifs -->
             <div class="pricing-grid" id="pricing-grid">
-                <!-- Rempli dynamiquement par JavaScript -->
+                <!-- Les tarifs seront injectés dynamiquement -->
+            </div>
+
+            <!-- Note sur les tarifs -->
+            <div class="pricing-note">
+                <p>
+                    <i class="fas fa-info-circle"></i>
+                    Tous nos tarifs incluent un diagnostic complet et un rapport détaillé.
+                    Devis personnalisé disponible pour les entreprises.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Support Section -->
-    <section id="support" class="section">
+    <!-- ===== SUPPORT SECTION ===== -->
+    <section id="support" class="section support-section">
         <div class="container">
-            <div class="section-title">
-                <h2>Support Immédiat</h2>
-                <p>Discutez avec nos experts et obtenez un devis personnalisé</p>
+            <!-- En-tête Section -->
+            <div class="section-header">
+                <h2 class="section-title">Support Immédiat</h2>
+                <p class="section-subtitle">
+                    Discutez avec nos experts et obtenez un devis personnalisé en temps réel
+                </p>
             </div>
 
+            <!-- Interface de Chat -->
             <div class="chat-wrapper">
+                <!-- En-tête du Chat -->
                 <div class="chat-header">
-                    <div class="chat-status online"></div>
-                    <span>Support Technique - En ligne</span>
+                    <div class="chat-status-info">
+                        <div class="chat-status online" aria-label="En ligne"></div>
+                        <span class="chat-status-text">Support Technique - En ligne</span>
+                    </div>
+                    
                     <div class="chat-actions">
-                        <button id="new-chat" class="btn-sm">Nouvelle demande</button>
+                        <button id="new-chat" class="btn btn-sm btn-outline" aria-label="Nouvelle conversation">
+                            <i class="fas fa-plus"></i>
+                            Nouvelle demande
+                        </button>
                     </div>
                 </div>
                 
-                <div id="chat-messages" class="chat-messages">
+                <!-- Zone des Messages -->
+                <div id="chat-messages" class="chat-messages" role="log" aria-live="polite">
+                    <!-- Message de bienvenue -->
                     <div class="welcome-message">
-                        <div class="message agent">
-                            <p>👋 Bonjour ! Je suis votre assistant technique. Décrivez votre problème et je vous connecterai avec l'expert approprié.</p>
-                            <div class="message-time" id="current-time"></div>
+                        <div class="message agent" role="article">
+                            <div class="message-content">
+                                <p>👋 <strong>Bonjour !</strong> Je suis votre assistant technique. Décrivez votre problème et je vous connecterai avec l'expert approprié.</p>
+                            </div>
+                            <div class="message-time" id="current-time" aria-label="Heure actuelle">
+                                <!-- Heure actuelle -->
+                            </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Zone de Saisie -->
                 <div class="chat-input-area">
-                    <input type="text" id="chat-input" placeholder="Décrivez votre problème technique..." autocomplete="off">
-                    <button id="send-btn" class="btn">
+                    <input 
+                        type="text" 
+                        id="chat-input" 
+                        class="chat-input" 
+                        placeholder="Décrivez votre problème technique en détail..." 
+                        autocomplete="off"
+                        aria-label="Votre message"
+                        maxlength="500"
+                    >
+                    <button id="send-btn" class="btn btn-primary" aria-label="Envoyer le message">
                         <i class="fas fa-paper-plane"></i>
                     </button>
+                </div>
+
+                <!-- Indicateur de saisie -->
+                <div class="typing-indicator" id="typing-indicator" aria-hidden="true">
+                    <span>Expert en train de répondre...</span>
+                    <div class="typing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" role="contentinfo">
         <div class="container">
+            <!-- Contenu du Footer -->
             <div class="footer-content">
+                <!-- Colonne Entreprise -->
                 <div class="footer-column">
-                    <h3>Maintenance IT Pro</h3>
-                    <p>Votre partenaire de confiance depuis 2015</p>
+                    <h3 class="footer-title">Maintenance IT Pro</h3>
+                    <p class="footer-description">
+                        Votre partenaire de confiance en maintenance informatique depuis 2015. 
+                        Plus de 500 clients satisfaits.
+                    </p>
+                    
+                    <!-- Réseaux Sociaux -->
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" aria-label="Twitter" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" aria-label="Facebook" class="social-link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
                 </div>
+
+                <!-- Colonne Contact -->
                 <div class="footer-column">
-                    <h3>Contact</h3>
-                    <p><i class="fas fa-phone"></i> +33 1 84 88 48 48</p>
-                    <p><i class="fas fa-envelope"></i> support@maintenance-it.pro</p>
+                    <h3 class="footer-title">Contact</h3>
+                    <div class="contact-info">
+                        <p class="contact-item">
+                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <a href="tel:+33184884848">+33 1 84 88 48 48</a>
+                        </p>
+                        <p class="contact-item">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <a href="mailto:support@maintenance-it.pro">support@maintenance-it.pro</a>
+                        </p>
+                        <p class="contact-item">
+                            <i class="fas fa-clock" aria-hidden="true"></i>
+                            Disponible 24h/24, 7j/7
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Colonne Liens Rapides -->
+                <div class="footer-column">
+                    <h3 class="footer-title">Liens Rapides</h3>
+                    <nav class="footer-nav" aria-label="Navigation secondaire">
+                        <a href="#services" class="footer-link">Nos Services</a>
+                        <a href="#pricing" class="footer-link">Nos Tarifs</a>
+                        <a href="#support" class="footer-link">Support Urgent</a>
+                        <a href="login.html" class="footer-link">Espace Pro</a>
+                    </nav>
                 </div>
             </div>
+
+            <!-- Bas du Footer -->
             <div class="footer-bottom">
-                <p>&copy; 2024 Maintenance IT Professionnelle. Tous droits réservés.</p>
+                <div class="footer-legal">
+                    <p>&copy; 2024 Maintenance IT Professionnelle. Tous droits réservés.</p>
+                    <div class="legal-links">
+                        <a href="#" class="legal-link">Mentions légales</a>
+                        <a href="#" class="legal-link">Politique de confidentialité</a>
+                        <a href="#" class="legal-link">CGV</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- ===== SCRIPTS ===== -->
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/data.js"></script>
     <script src="assets/js/chat.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <!-- Script d'initialisation -->
+    <script>
+        // Initialisation au chargement de la page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialiser les composants
+            if (typeof initMain === 'function') {
+                initMain();
+            }
+            
+            // Mettre à jour l'heure actuelle
+            updateCurrentTime();
+            
+            // Initialiser le chat
+            if (typeof initChat === 'function') {
+                initChat();
+            }
+        });
+
+        // Fonction utilitaire pour mettre à jour l'heure
+        function updateCurrentTime() {
+            const now = new Date();
+            const timeString = now.getHours().toString().padStart(2, '0') + ':' + 
+                             now.getMinutes().toString().padStart(2, '0');
+            const timeElement = document.getElementById('current-time');
+            if (timeElement) {
+                timeElement.textContent = timeString;
+            }
+        }
+    </script>
 </body>
 </html>
